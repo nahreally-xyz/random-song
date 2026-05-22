@@ -78,9 +78,16 @@ const scrubber = document.getElementById("scrubber");
 const timeCurrent = document.getElementById("time-current");
 const timeDuration = document.getElementById("time-duration");
 const btnPlayPause = document.getElementById("btn-playpause");
+const btnPrev = document.getElementById("btn-prev");
 
 let order = [];
 let orderIndex = 0;
+
+function updatePrevBtn() {
+  btnPrev.disabled = orderIndex === 0;
+  btnPrev.style.opacity = orderIndex === 0 ? "0.25" : "";
+  btnPrev.style.cursor = orderIndex === 0 ? "default" : "";
+}
 
 function shuffle(arr) {
   const a = [...arr.keys()];
@@ -115,6 +122,7 @@ function load(index) {
   }
 
   songCounter.textContent = `${String(song.chronoIndex).padStart(2, "0")} / ${String(songs.length).padStart(2, "0")}`;
+  updatePrevBtn();
   if (song.lyrics) {
     lyricsEl.textContent = song.lyrics;
     lyricsWrap.hidden = false;
