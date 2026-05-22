@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>random songs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1 id="site-title">random nahreally song</h1>
+    <div id="artwork-wrap">
+      <img id="artwork" src="" alt="album art" />
+    </div>
+    <div id="info">
+      <p id="song-title">—</p>
+      <p id="song-artist">—</p>
+      <p id="song-album"><span id="song-track-label">Track — from</span><a id="song-album-link" href="#" target="_blank" rel="noopener">—</a><span id="song-year"></span></p>
+    </div>
+    <audio id="player" preload="auto"></audio>
+    <div id="scrubber-wrap">
+      <span id="time-current">0:00</span>
+      <input id="scrubber" type="range" min="0" max="100" value="0" step="0.1" />
+      <span id="time-duration">0:00</span>
+    </div>
+    <div id="controls">
+      <button id="btn-prev" aria-label="Previous">&#9198;</button>
+      <button id="btn-playpause" aria-label="Play/Pause"><span style="display:inline-block;transform:scaleY(1.3)">&#9646;&#9646;</span></button>
+      <button id="btn-next" aria-label="Next">&#9197;</button>
+    </div>
+    <p id="song-counter"></p>
+    <div id="lyrics-wrap" hidden>
+      <pre id="lyrics"></pre>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
