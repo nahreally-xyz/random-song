@@ -152,14 +152,24 @@ function load(index) {
   player.src = song.src;
   artwork.src = song.artwork;
   updateMediaSession(song);
+  songTitle.style.removeProperty('--scroll-dist');
   const featMatch = song.title.match(/\((ft\.|feat)/i);
   const parenIdx2 = featMatch ? featMatch.index : -1;
   if (parenIdx2 !== -1) {
-    songTitle.innerHTML = song.title.slice(0, parenIdx2).trimEnd() +
-      "<span style='display:block;font-size:0.85rem;font-weight:400'>" + song.title.slice(parenIdx2) + "</span>";
+    songTitle.innerHTML = `<span class="title-inner">${song.title.slice(0, parenIdx2).trimEnd()} <span style="font-size:0.85rem;font-weight:400">${song.title.slice(parenIdx2)}</span></span>`;
   } else {
-    songTitle.textContent = song.title;
+    songTitle.innerHTML = `<span class="title-inner">${song.title}</span>`;
   }
+  requestAnimationFrame(() => {
+    const inner = songTitle.querySelector('.title-inner');
+    const style = getComputedStyle(songTitle);
+    const pad = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    const dist = inner.offsetWidth - (songTitle.clientWidth - pad);
+    if (dist > 0) {
+      songTitle.style.setProperty('--scroll-dist', `-${dist}px`);
+      inner.classList.add('scrolling');
+    }
+  });
   songArtist.textContent = song.artist;
   if (song.album) {
     songTrackLabel.textContent = song.track ? `Track ${song.track} from ` : "From ";
