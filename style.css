@@ -1,5 +1,36 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+#tap-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0e0e0e;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+#tap-overlay.visible {
+  display: flex;
+}
+
+#tap-btn {
+  background: none;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#tap-btn:hover {
+  border-color: #888;
+  color: #fff;
+}
+
 body {
   background: #0e0e0e;
   color: #e0e0e0;

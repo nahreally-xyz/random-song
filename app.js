@@ -147,9 +147,14 @@ function init() {
   orderIndex = 0;
   load(order[orderIndex]);
   player.play().catch(() => {
-    // browsers may block autoplay before user interaction — silent fail
+    document.getElementById("tap-overlay").classList.add("visible");
   });
 }
+
+document.getElementById("tap-btn").addEventListener("click", () => {
+  document.getElementById("tap-overlay").classList.remove("visible");
+  player.play();
+});
 
 function fmt(s) {
   const m = Math.floor(s / 60);
