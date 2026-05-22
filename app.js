@@ -98,10 +98,28 @@ function shuffle(arr) {
   return a;
 }
 
+function updateMediaSession(song) {
+  if (!("mediaSession" in navigator)) return;
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: song.title,
+    artist: song.artist,
+    album: song.album,
+    artwork: [{ src: new URL(song.artwork, location.href).href }],
+  });
+  navigator.mediaSession.setActionHandler("play", () => player.play());
+  navigator.mediaSession.setActionHandler("pause", () => player.pause());
+  navigator.mediaSession.setActionHandler("previoustrack", playPrev);
+  navigator.mediaSession.setActionHandler("nexttrack", playNext);
+  navigator.mediaSession.setActionHandler("seekto", (e) => {
+    player.currentTime = e.seekTime;
+  });
+}
+
 function load(index) {
   const song = songs[index];
   player.src = song.src;
   artwork.src = song.artwork;
+  updateMediaSession(song);
   const featMatch = song.title.match(/\((ft\.|feat)/i);
   const parenIdx2 = featMatch ? featMatch.index : -1;
   if (parenIdx2 !== -1) {
@@ -174,6 +192,9 @@ function updatePlayPause() {
   btnPlayPause.innerHTML = player.paused
     ? "&#9654;"
     : "<span style='display:inline-block;transform:scaleY(1.6)'>&#9646;&#9646;</span>";
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.playbackState = player.paused ? "paused" : "playing";
+  }
 }
 
 player.addEventListener("timeupdate", () => {
