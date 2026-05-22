@@ -173,7 +173,7 @@ function fmt(s) {
 function updatePlayPause() {
   btnPlayPause.innerHTML = player.paused
     ? "&#9654;"
-    : "<span style='display:inline-block;transform:scaleY(1.3)'>&#9646;&#9646;</span>";
+    : "<span style='display:inline-block;transform:scaleY(1.6)'>&#9646;&#9646;</span>";
 }
 
 player.addEventListener("timeupdate", () => {
