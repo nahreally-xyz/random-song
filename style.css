@@ -79,6 +79,7 @@ main {
   width: 100%;
   aspect-ratio: 1;
   max-height: 55vh;
+  margin-top: 1rem;
   border-radius: 8px;
   overflow: hidden;
   background: #1a1a1a;
@@ -95,7 +96,6 @@ main {
   text-align: center;
   line-height: 1.4;
   min-height: 4rem;
-  margin-top: 1rem;
 }
 
 #song-title {
