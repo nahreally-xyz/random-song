@@ -14,7 +14,7 @@
 
 #tap-title {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.08em;
   color: #e0e0e0;
   text-transform: lowercase;
@@ -66,7 +66,7 @@ main {
 
 #site-title {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.08em;
   color: #e0e0e0;
   text-transform: lowercase;
@@ -99,7 +99,7 @@ main {
 
 #song-title {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.01em;
 }
 
